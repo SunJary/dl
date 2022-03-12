@@ -6,18 +6,18 @@
 //
 // To install, run:
 //
-//     $ go install golang.org/dl/go1.18rc1@latest
+//     $ go install github.com/SunJary/dl/go1.18rc1@latest
 //     $ go1.18rc1 download
 //
 // And then use the go1.18rc1 command as if it were your normal go
 // command.
 //
-// See the release notes at https://tip.golang.org/doc/go1.18.
+// See the release notes at https://tip.github.com/SunJary/doc/go1.18.
 //
 // File bugs at https://go.dev/issue/new.
 package main
 
-import "golang.org/dl/internal/version"
+import "github.com/SunJary/dl/internal/version"
 
 func main() {
 	version.Run("go1.18rc1")

@@ -79,7 +79,7 @@ func installTip(root, target string) error {
 	// If the argument is a simple decimal number, consider it a CL number.
 	// Otherwise, consider it a branch name. If it's missing, fetch master.
 	if n, _ := strconv.Atoi(target); n >= 1 && strconv.Itoa(n) == target {
-		fmt.Fprintf(os.Stderr, "This will download and execute code from golang.org/cl/%s, continue? [y/n] ", target)
+		fmt.Fprintf(os.Stderr, "This will download and execute code from github.com/SunJary/cl/%s, continue? [y/n] ", target)
 		var answer string
 		if fmt.Scanln(&answer); answer != "y" {
 			return fmt.Errorf("interrupted")

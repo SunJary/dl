@@ -6,18 +6,18 @@
 //
 // To install, run:
 //
-//     $ go install golang.org/dl/go1.15.10@latest
+//     $ go install github.com/SunJary/dl/go1.15.10@latest
 //     $ go1.15.10 download
 //
 // And then use the go1.15.10 command as if it were your normal go
 // command.
 //
-// See the release notes at https://golang.org/doc/devel/release.html#go1.15.minor
+// See the release notes at https://github.com/SunJary/doc/devel/release.html#go1.15.minor
 //
-// File bugs at https://golang.org/issues/new
+// File bugs at https://github.com/SunJary/issues/new
 package main
 
-import "golang.org/dl/internal/version"
+import "github.com/SunJary/dl/internal/version"
 
 func main() {
 	version.Run("go1.15.10")

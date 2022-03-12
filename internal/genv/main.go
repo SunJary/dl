@@ -46,7 +46,7 @@ func main() {
 			Version             string // "go1.5.3rc2"
 			VersionNoPatch      string // "go1.5"
 			CapitalSpaceVersion string // "Go 1.5"
-			DocHost             string // "golang.org" or "tip.golang.org" for rc/beta
+			DocHost             string // "github.com/SunJary" or "tip.github.com/SunJary" for rc/beta
 		}{
 			Year:                time.Now().Year(),
 			Version:             version,
@@ -72,9 +72,9 @@ func main() {
 
 func docHost(ver string) string {
 	if strings.Contains(ver, "rc") || strings.Contains(ver, "beta") {
-		return "tip.golang.org"
+		return "tip.github.com/SunJary"
 	}
-	return "golang.org"
+	return "github.com/SunJary"
 }
 
 func versionNoPatch(ver string) string {
@@ -105,7 +105,7 @@ var mainTmpl = template.Must(template.New("main").Parse(`// Copyright {{.Year}} 
 //
 // To install, run:
 //
-//     $ go install golang.org/dl/{{.Version}}@latest
+//     $ go install github.com/SunJary/dl/{{.Version}}@latest
 //     $ {{.Version}} download
 //
 // And then use the {{.Version}} command as if it were your normal go
@@ -113,10 +113,10 @@ var mainTmpl = template.Must(template.New("main").Parse(`// Copyright {{.Year}} 
 //
 // See the release notes at https://{{.DocHost}}/doc/{{.VersionNoPatch}}
 //
-// File bugs at https://golang.org/issues/new
+// File bugs at https://github.com/SunJary/issues/new
 package main
 
-import "golang.org/dl/internal/version"
+import "github.com/SunJary/dl/internal/version"
 
 func main() {
 	version.Run("{{.Version}}")
@@ -124,9 +124,9 @@ func main() {
 `))
 
 // golangOrgDlRoot determines the directory corresponding to the root
-// of module golang.org/dl by invoking 'go list -m' in module mode.
+// of module github.com/SunJary/dl by invoking 'go list -m' in module mode.
 // It must be called with a working directory that is contained
-// by the golang.org/dl module, otherwise it returns an error.
+// by the github.com/SunJary/dl module, otherwise it returns an error.
 func golangOrgDlRoot() (string, error) {
 	cmd := exec.Command("go", "list", "-m", "-json")
 	cmd.Env = append(os.Environ(), "GO111MODULE=on")
@@ -144,8 +144,8 @@ func golangOrgDlRoot() (string, error) {
 	if err != nil {
 		return "", err
 	}
-	if mod.Path != "golang.org/dl" {
-		return "", fmt.Errorf("working directory must be in module golang.org/dl, but 'go list -m' reports it's currently in module %s", mod.Path)
+	if mod.Path != "github.com/SunJary/dl" {
+		return "", fmt.Errorf("working directory must be in module github.com/SunJary/dl, but 'go list -m' reports it's currently in module %s", mod.Path)
 	}
 	return mod.Dir, nil
 }

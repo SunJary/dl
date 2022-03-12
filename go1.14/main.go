@@ -6,18 +6,18 @@
 //
 // To install, run:
 //
-//     $ go install golang.org/dl/go1.14@latest
+//     $ go install github.com/SunJary/dl/go1.14@latest
 //     $ go1.14 download
 //
 // And then use the go1.14 command as if it were your normal go
 // command.
 //
-// See the release notes at https://golang.org/doc/go1.14
+// See the release notes at https://github.com/SunJary/doc/go1.14
 //
-// File bugs at https://golang.org/issues/new
+// File bugs at https://github.com/SunJary/issues/new
 package main
 
-import "golang.org/dl/internal/version"
+import "github.com/SunJary/dl/internal/version"
 
 func main() {
 	version.Run("go1.14")

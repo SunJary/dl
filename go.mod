@@ -1,3 +1,3 @@
-module golang.org/dl
+module github.com/SunJary/dl
 
 go 1.11

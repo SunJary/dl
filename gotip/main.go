@@ -6,7 +6,7 @@
 //
 // To install, run:
 //
-//     $ go install golang.org/dl/gotip@latest
+//     $ go install github.com/SunJary/dl/gotip@latest
 //     $ gotip download
 //
 // And then use the gotip command as if it were your normal go command.
@@ -17,7 +17,7 @@
 package main
 
 import (
-	"golang.org/dl/internal/version"
+	"github.com/SunJary/dl/internal/version"
 )
 
 func main() {

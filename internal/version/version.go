@@ -115,13 +115,13 @@ func install(targetDir, version string) error {
 			return fmt.Errorf("downloaded file %s size %v doesn't match server size %v", archiveFile, fi.Size(), res.ContentLength)
 		}
 	}
-	wantSHA, err := slurpURLToString(goURL + ".sha256")
-	if err != nil {
-		return err
-	}
-	if err := verifySHA256(archiveFile, strings.TrimSpace(wantSHA)); err != nil {
-		return fmt.Errorf("error verifying SHA256 of %v: %v", archiveFile, err)
-	}
+	// wantSHA, err := slurpURLToString(goURL + ".sha256")
+	// if err != nil {
+	// 	return err
+	// }
+	// if err := verifySHA256(archiveFile, strings.TrimSpace(wantSHA)); err != nil {
+	// 	return fmt.Errorf("error verifying SHA256 of %v: %v", archiveFile, err)
+	// }
 	log.Printf("Unpacking %v ...", archiveFile)
 	if err := unpackArchive(targetDir, archiveFile); err != nil {
 		return fmt.Errorf("extracting archive %v: %v", archiveFile, err)
@@ -398,7 +398,7 @@ func versionArchiveURL(version string) string {
 	if goos == "linux" && runtime.GOARCH == "arm" {
 		arch = "armv6l"
 	}
-	return "https://dl.google.com/go/" + version + "." + goos + "-" + arch + ext
+	return "https://gomirrors.org/dl/go/" + version + "." + goos + "-" + arch + ext
 }
 
 const caseInsensitiveEnv = runtime.GOOS == "windows"
@@ -476,7 +476,7 @@ func (uat userAgentTransport) RoundTrip(r *http.Request) (*http.Response, error)
 // built with Go 1.9+, but keep it around for now until Go 1.8
 // is no longer seen in the wild in common distros.
 //
-// This is copied verbatim from golang.org/x/build/envutil.Dedup at CL 10301
+// This is copied verbatim from github.com/SunJary/x/build/envutil.Dedup at CL 10301
 // (commit a91ae26).
 func dedupEnv(caseInsensitive bool, env []string) []string {
 	out := make([]string, 0, len(env))
