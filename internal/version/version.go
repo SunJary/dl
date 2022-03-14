@@ -87,6 +87,9 @@ func install(targetDir, version string) error {
 		return err
 	}
 	goURL := versionArchiveURL(version)
+
+	log.Printf("Download From '%v'", goURL)
+
 	res, err := http.Head(goURL)
 	if err != nil {
 		return err
@@ -115,13 +118,13 @@ func install(targetDir, version string) error {
 			return fmt.Errorf("downloaded file %s size %v doesn't match server size %v", archiveFile, fi.Size(), res.ContentLength)
 		}
 	}
-	// wantSHA, err := slurpURLToString(goURL + ".sha256")
-	// if err != nil {
-	// 	return err
-	// }
-	// if err := verifySHA256(archiveFile, strings.TrimSpace(wantSHA)); err != nil {
-	// 	return fmt.Errorf("error verifying SHA256 of %v: %v", archiveFile, err)
-	// }
+	wantSHA, err := slurpURLToString(goURL + ".sha256")
+	if err != nil {
+		return err
+	}
+	if err := verifySHA256(archiveFile, strings.TrimSpace(wantSHA)); err != nil {
+		return fmt.Errorf("error verifying SHA256 of %v: %v", archiveFile, err)
+	}
 	log.Printf("Unpacking %v ...", archiveFile)
 	if err := unpackArchive(targetDir, archiveFile); err != nil {
 		return fmt.Errorf("extracting archive %v: %v", archiveFile, err)
@@ -398,7 +401,7 @@ func versionArchiveURL(version string) string {
 	if goos == "linux" && runtime.GOARCH == "arm" {
 		arch = "armv6l"
 	}
-	return "https://gomirrors.org/dl/go/" + version + "." + goos + "-" + arch + ext
+	return "https://mirrors.ustc.edu.cn/golang/" + version + "." + goos + "-" + arch + ext
 }
 
 const caseInsensitiveEnv = runtime.GOOS == "windows"
