@@ -1,4 +1,6 @@
 #!/bin/bash
+git push origin master &&
+
 git fetch godl &&
 
 git merge godl/master -m "merge goland/dl master" && 
