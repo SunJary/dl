@@ -1,9 +1,9 @@
 #!/bin/bash
 git push origin master &&
 
-git fetch godl &&
+git fetch upstream &&
 
-git merge godl/master -m "merge goland/dl master" && 
+git merge upstream/master -m "merge goland/dl master" && 
 
 sed -i "s#golang.org/dl#github.com/SunJary/dl#g"  `grep go -rl --include '*.go' .` && 
 
