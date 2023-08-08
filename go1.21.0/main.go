@@ -6,7 +6,7 @@
 //
 // To install, run:
 //
-//	$ go install golang.org/dl/go1.21.0@latest
+//	$ go install github.com/SunJary/dl/go1.21.0@latest
 //	$ go1.21.0 download
 //
 // And then use the go1.21.0 command as if it were your normal go
@@ -17,7 +17,7 @@
 // File bugs at https://go.dev/issue/new.
 package main
 
-import "golang.org/dl/internal/version"
+import "github.com/SunJary/dl/internal/version"
 
 func main() {
 	version.Run("go1.21.0")
